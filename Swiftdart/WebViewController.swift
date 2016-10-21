@@ -20,7 +20,7 @@ class WebViewController: UIViewController, JSEvalDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let configuration = WKWebViewConfiguration()        
+        let configuration = WKWebViewConfiguration()
         configuration.userContentController = userController
 
         userController.add(bridge, name: "bridge")
