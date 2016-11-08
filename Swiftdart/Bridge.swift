@@ -22,13 +22,19 @@ extension KeyValueCodable {
     // Returns the value for the property identified by a given key.
     func valueForKey<T>(key : String) -> T? {
 
-        let mirror = Mirror(reflecting: self)
+        var mirror: Mirror? = Mirror(reflecting: self)
 
-        for (_, child) in mirror.children.enumerated() {
-            if child.label == key {
-                return child.value as? T
+        while(mirror != nil) {
+            for (_, child) in mirror!.children.enumerated() {                
+
+                if child.label == key {
+                    return child.value as? T
+                }
             }
+
+            mirror = mirror?.superclassMirror
         }
+
 
         return nil
     }
@@ -67,8 +73,7 @@ class Bridge: NSObject, WKScriptMessageHandler {
                         registeredModule.didRecieveEvent(event, data: data)
                     } else if let data = body["data"] as? [String] {
                         registeredModule.didRecieveEvent(event, data: data)
-                    }
-                    else {
+                    } else if let data = body["data"]{
                         registeredModule.didRecieveEvent(event, data: body["data"] ?? NSNull())
                     }
                 }
@@ -160,6 +165,11 @@ class ModuleApi: NSObject {
 }
 
 class ModuleEvents: NSObject, KeyValueCodable {
+    var willLoad = Event<Any>()
+    var didLoad = Event<Any>()
+    var willUnload = Event<Any>()
+    var didUnload = Event<Any>()
+
     required override init() {
         super.init()
     }

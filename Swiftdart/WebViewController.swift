@@ -16,6 +16,7 @@ class WebViewController: UIViewController, JSEvalDelegate {
     let todoContainer = UIView()
 
     let bridge = Bridge()
+    var contentRendererModule: Module<ContentRendererEvents, ContentRendererApi>?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,12 +30,11 @@ class WebViewController: UIViewController, JSEvalDelegate {
         webview = WKWebView(frame: .zero, configuration: configuration)
 
         view.addSubview(webview)
-        view.addSubview(todoContainer)
 
         setupModules()
         doConstraints()
 
-        webview.load(URLRequest(url: URL(string: "http://localhost:8080/todo_app/web")!,
+        webview.load(URLRequest(url: URL(string: "http://localhost:8080/a/QWNjb3VudB81NjM5NDQ1NjA0NzI4ODMy/mobileview/cmVzb3VyY2VfaWQ9VjBaRVlYUmhSVzUwYVhSNUhrUnZZM1Z0Wlc1ME9rSXdNamN6UWpBM1JUTTNOekUyTTBVMU5VRkdRVVl6TXpNME9FSXdRVU15T2pFd056WXpOVGsxUTBORE4wWkNRamM0UTBVeFFVWXpNekkzUlRWRk4wRXkmcmVmZXJyZXI9d2ZfaG9tZV9wcmV2aWV3")!,
                                 cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 60))
     }
 
@@ -43,13 +43,6 @@ class WebViewController: UIViewController, JSEvalDelegate {
             make.top.equalTo(0)
             make.left.equalTo(0)
             make.right.equalTo(0)
-            make.bottom.equalTo(view.snp.centerY)
-        }
-
-        todoContainer.snp.makeConstraints { (make) in
-            make.left.equalTo(0)
-            make.right.equalTo(0)
-            make.top.equalTo(view.snp.centerY)
             make.bottom.equalTo(0)
         }
     }
@@ -65,9 +58,22 @@ class WebViewController: UIViewController, JSEvalDelegate {
         let todoModule = Module<TodoEvents, TodoApi>(moduleType: .Todo)
         bridge.registerModule(todoModule)
 
-        // Where a native component is created and given a module to communicate with
-        let todoListVC = TodoListVC(module: todoModule)
-        addViewContoller(UINavigationController(rootViewController: todoListVC), toView: todoContainer)
+        contentRendererModule = Module<ContentRendererEvents, ContentRendererApi>(moduleType: .ContentRenderer)
+        bridge.registerModule(contentRendererModule!)
+
+        _ = contentRendererModule?.events?.didLoad.addHandler(self, handler: WebViewController.onContentRendererWillLoad)
+        _ = contentRendererModule?.events?.willUnload.addHandler(self, handler: WebViewController.onContentRendererWillUnload)
+    }
+
+    func onContentRendererWillLoad(_: Any) {
+        let zoomInButton = UIBarButtonItem(title: "Zoom In", style: .plain, target: contentRendererModule!.api, action: #selector(ContentRendererApi.zoomIn))
+        let zoomOutButton = UIBarButtonItem(title: "Zoom To Fit", style: .plain, target: contentRendererModule!.api, action: #selector(ContentRendererApi.zoomToFit))
+
+        navigationItem.rightBarButtonItems = [zoomInButton, zoomOutButton]
+    }
+
+    func onContentRendererWillUnload(_: Any) {
+        navigationItem.rightBarButtonItems = []
     }
 
     func addViewContoller(_ viewController: UIViewController, toView view: UIView) {

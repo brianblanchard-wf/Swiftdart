@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1F2B453359D7F094FD07880C /* Pods_SwiftdartTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E40460419A1C408CB776D04 /* Pods_SwiftdartTests.framework */; };
+		550C59F51DBFE38E0082DB04 /* ContentRendererModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550C59F41DBFE38E0082DB04 /* ContentRendererModule.swift */; };
 		556DE6601DB94CED0020C1DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556DE65F1DB94CED0020C1DF /* AppDelegate.swift */; };
 		556DE6651DB94CED0020C1DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 556DE6631DB94CED0020C1DF /* Main.storyboard */; };
 		556DE6671DB94CED0020C1DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 556DE6661DB94CED0020C1DF /* Assets.xcassets */; };
@@ -44,6 +45,7 @@
 		1D07C7FD2C1C44AE0088933E /* Pods-SwiftdartTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftdartTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftdartTests/Pods-SwiftdartTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3FEC3FA70754A908283A453B /* Pods-SwiftdartUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftdartUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftdartUITests/Pods-SwiftdartUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		437CAB38E0CD005843DAFEF9 /* Pods_SwiftdartUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftdartUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		550C59F41DBFE38E0082DB04 /* ContentRendererModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentRendererModule.swift; sourceTree = "<group>"; };
 		556DE65C1DB94CED0020C1DF /* Swiftdart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swiftdart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		556DE65F1DB94CED0020C1DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		556DE6641DB94CED0020C1DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				556DE68D1DB94D400020C1DF /* Bridge.swift */,
+				550C59F41DBFE38E0082DB04 /* ContentRendererModule.swift */,
 				556DE68E1DB94D400020C1DF /* Event.swift */,
 				556DE68F1DB94D400020C1DF /* TodoModule.swift */,
 				556DE6901DB94D400020C1DF /* WebViewController.swift */,
@@ -460,6 +463,7 @@
 			files = (
 				556DE6921DB94D400020C1DF /* Event.swift in Sources */,
 				556DE6941DB94D400020C1DF /* WebViewController.swift in Sources */,
+				550C59F51DBFE38E0082DB04 /* ContentRendererModule.swift in Sources */,
 				556DE6601DB94CED0020C1DF /* AppDelegate.swift in Sources */,
 				556DE6911DB94D400020C1DF /* Bridge.swift in Sources */,
 				556DE6931DB94D400020C1DF /* TodoModule.swift in Sources */,
@@ -621,6 +625,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.webfilings.webfilings.Swiftdart;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -636,6 +641,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.webfilings.webfilings.Swiftdart;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

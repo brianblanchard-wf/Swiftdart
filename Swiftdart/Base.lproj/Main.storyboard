@@ -22,7 +22,7 @@
             </objects>
             <point key="canvasLocation" x="-546" y="81"/>
         </scene>
-        <!--Dart Todo List-->
+        <!--Dart Viewer-->
         <scene sceneID="XGh-6v-Emn">
             <objects>
                 <viewController id="M7G-h7-3ql" customClass="WebViewController" customModule="Swiftdart" customModuleProvider="target" sceneMemberID="viewController">
@@ -35,7 +35,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Dart Todo List" id="whs-7R-n7C"/>
+                    <navigationItem key="navigationItem" title="Dart Viewer" id="whs-7R-n7C"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RjJ-5q-Rev" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
