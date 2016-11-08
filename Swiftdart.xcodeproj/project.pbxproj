@@ -626,7 +626,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.webfilings.webfilings.Swiftdart;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Debug;
 		};
@@ -642,7 +642,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.webfilings.webfilings.Swiftdart;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Release;
 		};
